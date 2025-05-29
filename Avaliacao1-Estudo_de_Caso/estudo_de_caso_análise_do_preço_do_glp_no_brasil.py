@@ -72,11 +72,8 @@ df_variacao = pd.DataFrame(variacao)
 display(df_variacao.head(36))
 
 #Gráfico indexado
-plt.title('Variação de Preço do GLP')
-plt.xlabel('Ano/Mês')
-plt.ylabel('Preço Médio (R$)')
-plt.plot(df_variacao.index, df_variacao['Preço Médio (R$)'])
-plt.show()
+df_variacao['Variação (%)'].plot(kind='line', figsize=(8, 4), title='Variação (%)')
+plt.gca().spines[['top', 'right']].set_visible(False)
 
 # 6. Em que Momento Ele Oscilou
 minimoP = df_variacao['Variação (%)'].min()
