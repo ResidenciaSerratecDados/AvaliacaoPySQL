@@ -21,7 +21,7 @@ df_2401=pd.read_csv('/content/glp-2024-01.csv', sep=';')
 df_2402=pd.read_csv('/content/glp-2024-02.csv', sep=';')
 
 df_222324=pd.concat([df_2201,df_2202,df_2301,df_2302,df_2401,df_2402])
-display(df_222324.head(700000))
+display(df_222324.head())
 
 # 2. Tratar os Dados
 
@@ -40,6 +40,9 @@ display(df_222324.head(700000))
 # 3. Separar por Ano
 df_222324['Ano'] = df_222324['Data da Coleta'].dt.year
 display(df_222324.head(700000))
+'''
+Através da criação da coluna Ano com a fórmula acima, é possível filtrar os dados por ano.
+'''
 
 # 4. Cálculos Estatísticos
 media = sum(df_222324['Valor de Venda'])/len(df_222324['Valor de Venda'])
@@ -53,6 +56,19 @@ print('Mediana: R$',round(mediana,2))
 print('Desvio Padrão: R$',round(desvio_padrao,2))
 print('Maior Valor de Venda: R$',round(maximo,2))
 print('Menor Valor de Venda: R$',round(minimo,2))
+
+# indexar valor de venda  por regiao
+rv = df_222324.groupby('Regiao - Sigla')['Valor de Venda']
+
+regiao = {
+    'Região': ['Centro-Oeste', 'Norte', 'Nordeste', 'Sul', 'Sudeste'],
+    'Preço Médio (R$)': round(rv.mean(),2),
+    'Preço Mínimo (R$)': round(rv.min(),2),
+    'Preço Máximo (R$)': round(rv.max(),2),
+    'Desvio Padrão (R$)': round(rv.std(),2)
+}
+df_regiao = pd.DataFrame(regiao)
+display(df_regiao.head(5))
 
 # 5. Variação do Preço do GLP
 
@@ -81,21 +97,10 @@ maximoP = df_variacao['Variação (%)'].max()
 print('Menor Variação: ' + str(minimoP) + '%')
 print('Maior Variação: ' + str (maximoP) + '%')
 
-#Estes métodos acima foram excolhidos para seber as variações percentuais máxima e mínimA
+#Estes métodos acima foram excolhidos para seber as variações percentuais máxima e mínima.
+#O Percentual maior de variação foi 6,85% em Março de 2022. E o menor foi de -3,64% em Junho de 2023
 
 # 7. Destacar os Dados por Região
-# indexar valor de venda  por regiao
-rv = df_222324.groupby('Regiao - Sigla')['Valor de Venda']
-
-regiao = {
-    'Região': ['Centro-Oeste', 'Norte', 'Nordeste', 'Sul', 'Sudeste'],
-    'Preço Médio (R$)': round(rv.mean(),2),
-    'Preço Mínimo (R$)': round(rv.min(),2),
-    'Preço Máximo (R$)': round(rv.max(),2),
-    'Desvio Padrão (R$)': round(rv.std(),2)
-}
-df_regiao = pd.DataFrame(regiao)
-display(df_regiao.head(5))
 
 #Gráfico indexado em barras
 plt.title('Preço Médio por Região')
