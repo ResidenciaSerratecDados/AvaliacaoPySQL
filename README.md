@@ -11,5 +11,3 @@ Link Avaliação SQL: https://dontpad.com/analise_senac/av_sql
 Arquivo Parquet para Avaliação SQL: https://drive.google.com/file/d/1IILYMhcyghgNfn-JIg57bomLMQc_m3y3/view?usp=sharing
 
 Avaliação do Estudo de Caso GLP no Colab: https://colab.research.google.com/drive/1mdhZjeffBP0FYyymkzlc_lUaBGsjclOO?usp=sharing
-
-PandasBD Colab - Avaliação SQL Parquet: https://colab.research.google.com/drive/1yVT3he7RVwwCcm5RgcJvG_udYrnpmDZM
