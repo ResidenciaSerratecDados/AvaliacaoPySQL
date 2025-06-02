@@ -6,4 +6,6 @@ Link para baixar arquivos de base do Estudo de Caso: https://drive.google.com/fi
 
 Link Avaliação Python: https://dontpad.com/analise_senac/avaliacao1
 
-Avaliação do Estudo de caso no Colab: https://colab.research.google.com/drive/1mdhZjeffBP0FYyymkzlc_lUaBGsjclOO?usp=sharing
+Avaliação do Estudo de Caso GLP no Colab: https://colab.research.google.com/drive/1mdhZjeffBP0FYyymkzlc_lUaBGsjclOO?usp=sharing
+
+PandasBD Colab - Avaliação SQL Parquet: https://colab.research.google.com/drive/1yVT3he7RVwwCcm5RgcJvG_udYrnpmDZM
