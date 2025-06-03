@@ -52,16 +52,36 @@ SELECT * FROM gas ORDER BY marca;
 DELETE FROM gas WHERE id = 7;
 SELECT * FROM gas WHERE marca = 1;
 
+'Junções (JOINs): SELECT, FROM, WHERE, ORDER BY. (essencial para combinar dados de diferentes tabelas).'
+SELECT
+    p.peso AS Peso,
+    m.marca AS Marca,
+    g.endereco AS Endereco,
+    g.qtd AS Quantidade,
+    g.preco AS Preco,
+    g.total AS Total
+FROM gas g
+INNER JOIN Peso p ON p.id = g.peso
+INNER JOIN Marca m ON m.id = g.marca
+ORDER BY Marca;
+
 'Funções de Agregação: COUNT(), SUM(), AVG(), MIN(), MAX()'
-SELECT COUNT(marca=1) as Liquigas FROM gas;
-SELECT COUNT(marca=2) as Minasgas FROM gas;
-SELECT COUNT(marca=3) as Gasbras FROM gas;
+'Funções de Agregação: COUNT()'
+SELECT COUNT(marca) AS Liquigas FROM gas WHERE marca = 1;
+SELECT COUNT(marca) AS Liquigas FROM gas WHERE marca = 2;
+SELECT COUNT(marca) AS Liquigas FROM gas WHERE marca = 3;
+
+'Funções de Agregação: SUM()'
 SELECT sum(qtd) as TotalQuantidade FROM gas;
 SELECT sum(preco) as TotalPreco FROM gas;
 SELECT sum(Total) as TotalGeral FROM gas;
+
+'Funções de Agregação: AVG()'
 SELECT round(avg(preco),2) as MediaPreco FROM gas; 
 SELECT round(avg(total),2) as MediaTotal FROM gas; 
 SELECT round(avg(qtd),0) as MediaQuantidade FROM gas;
+
+'Funções de Agregação: MIN(), MAX()'
 SELECT max(qtd) as QuantidadeMaisAlta FROM gas;
 SELECT min(qtd) as QuantidadeMaisBaixa FROM gas;
 SELECT max(preco) as PrecoMaisAlto FROM gas;
@@ -69,5 +89,13 @@ SELECT min(preco) as PrecoMaisBaixo FROM gas;
 SELECT max(id) as PesoMaisAlto FROM peso;
 SELECT min(id) as PesoMaisBaixo FROM peso;
 
-
-
+'Agrupamento de Dados: GROUP BY e HAVING.'
+SELECT 
+    product_line,
+    AVG(unit_price) AS avg_price,
+    SUM(quantity) AS tot_pieces,
+    SUM(total) AS total_gain
+FROM sales
+GROUP BY product_line
+HAVING SUM(total) > 40000
+ORDER BY total_gain DESC
