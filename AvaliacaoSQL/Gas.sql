@@ -92,3 +92,9 @@ SELECT min(peso) as PesoMaisBaixo FROM gas;
 'Agrupamento de Dados: GROUP BY e HAVING.'
 SELECT preco FROM gas GROUP BY preco HAVING preco > 55 AND preco < 480 ORDER BY preco DESC;
 SELECT qtd FROM gas GROUP BY qtd HAVING qtd > 1 AND qtd < 6;
+
+'Subqueries (Opcional, para alunos mais avançados): '
+'Utilização de subconsultas para filtros ou resultados aninhados.'
+SELECT endereco FROM gas WHERE marca = (SELECT id FROM marca WHERE marca = 'LiquiGás');
+SELECT endereco FROM gas WHERE marca = (SELECT id FROM marca WHERE marca = 'MinasGás');
+SELECT endereco FROM gas WHERE marca = (SELECT id FROM marca WHERE marca = 'GasBrás');
