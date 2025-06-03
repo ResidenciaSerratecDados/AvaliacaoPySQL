@@ -86,16 +86,9 @@ SELECT max(qtd) as QuantidadeMaisAlta FROM gas;
 SELECT min(qtd) as QuantidadeMaisBaixa FROM gas;
 SELECT max(preco) as PrecoMaisAlto FROM gas;
 SELECT min(preco) as PrecoMaisBaixo FROM gas;
-SELECT max(id) as PesoMaisAlto FROM peso;
-SELECT min(id) as PesoMaisBaixo FROM peso;
+SELECT max(peso) as PesoMaisAlto FROM gas;
+SELECT min(peso) as PesoMaisBaixo FROM gas;
 
 'Agrupamento de Dados: GROUP BY e HAVING.'
-SELECT 
-    product_line,
-    AVG(unit_price) AS avg_price,
-    SUM(quantity) AS tot_pieces,
-    SUM(total) AS total_gain
-FROM sales
-GROUP BY product_line
-HAVING SUM(total) > 40000
-ORDER BY total_gain DESC
+SELECT preco FROM gas GROUP BY preco HAVING preco > 55 AND preco < 480 ORDER BY preco DESC;
+SELECT qtd FROM gas GROUP BY qtd HAVING qtd > 1 AND qtd < 6;
